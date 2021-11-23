@@ -52,24 +52,20 @@ OBJS = $(SRCS:.c=.o)
 OBJSB = $(SRCSB:.c=.o)
 
 %.o: %.c libft.h
-	@echo "Generated object file for > $*"
-	@gcc $(FLAGS) -c $< -o $@
+	cc $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
-	@echo "Mandatory 'libft.a' generated successfully :)"
+	ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 
 clean:
-	@rm -rf $(OBJSB)
-	@echo "All object files have been cleaned successfully"
+	rm -rf $(OBJSB)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
 bonus: $(OBJSB)
-	@ar rcs $(NAME) $(OBJSB)
-	@echo "Mandatory + bonus 'libft.a' generated successfully"
+	ar rcs $(NAME) $(OBJSB)

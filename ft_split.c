@@ -68,47 +68,30 @@ static int	ft_partlen(char *part_start, char sep)
 	return (len);
 }
 
-static char	*ft_fill_part(char *part_start, char sep)
-{
-	int		i;
-	int		part_len;
-	char	*part;
-
-	part_len = ft_partlen(part_start, sep);
-	part = (char *)malloc(sizeof(char) * (part_len + 1));
-	if (!part)
-		return (NULL);
-	i = 0;
-	while (i < part_len)
-	{
-		part[i] = part_start[i];
-		i++;
-	}
-	part[i] = '\0';
-	return (part);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	int		i;
 	char	*part_start;
 	int		parts_count;
 	char	**split_str;
-	char	*part;
 
 	if (s == NULL)
 		return (NULL);
-	i = 0;
 	parts_count = ft_count_parts(s, c);
 	split_str = (char **)malloc(sizeof(char *) * (parts_count + 1));
 	if (!split_str)
 		return (NULL);
-	while (i < parts_count)
+	i = -1;
+	while (++i < parts_count)
 	{
 		part_start = ft_nth_part(s, c, i + 1);
-		part = ft_fill_part(part_start, c);
-		split_str[i] = part;
-		i++;
+		split_str[i] = ft_substr(part_start, 0, ft_partlen(part_start, c));
+		if (!split_str[i])
+		{
+			while (i--)
+				free(split_str[i]);
+			return (NULL);
+		}
 	}
 	split_str[i] = NULL;
 	return (split_str);
