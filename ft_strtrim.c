@@ -82,10 +82,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	trimmed_str[i - start] = '\0';
 	return (trimmed_str);
 }
-
-int main(int argc, char const *argv[])
-{
-	char *s = ft_strtrim("       ", " ");
-	printf("|-%s-|\n", s);
-	return 0;
-}
