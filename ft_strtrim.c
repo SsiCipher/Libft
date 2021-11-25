@@ -34,6 +34,8 @@ static int	ft_trimstart(char *str, char *set)
 			return (i);
 		i++;
 	}
+	if (!ft_str_contains(set, str[i]))
+		return (i);
 	return (0);
 }
 
@@ -50,6 +52,8 @@ static int	ft_trimend(char *str, char *set)
 			return (i + 1);
 		i--;
 	}
+	if (!ft_str_contains(set, str[i]))
+		return (i + 1);
 	return (len - 1);
 }
 
@@ -64,7 +68,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	start = ft_trimstart((char *)s1, (char *)set);
 	end = ft_trimend((char *)s1, (char *)set);
-	if ((end - start + 1) == ft_strlen(s1))
+	if (start > end)
 		return (ft_strdup(""));
 	trimmed_str = (char *)malloc(sizeof(char) * (end - start + 1));
 	if (!trimmed_str)
@@ -77,4 +81,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	trimmed_str[i - start] = '\0';
 	return (trimmed_str);
+}
+
+int main(int argc, char const *argv[])
+{
+	char *s = ft_strtrim("       ", " ");
+	printf("|-%s-|\n", s);
+	return 0;
 }

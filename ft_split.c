@@ -90,6 +90,7 @@ char	**ft_split(char const *s, char c)
 		{
 			while (i--)
 				free(split_str[i]);
+			free(split_str);
 			return (NULL);
 		}
 	}
