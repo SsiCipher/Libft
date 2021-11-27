@@ -51,13 +51,13 @@ OBJS = $(SRCS:.c=.o)
 
 OBJSB = $(SRCSB:.c=.o)
 
-%.o: %.c libft.h
-	cc $(FLAGS) -c $< -o $@
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
 
-all: $(NAME)
+%.o: %.c libft.h
+	cc $(FLAGS) -c $< -o $@
+	ar rcs $(NAME) $@
 
 clean:
 	rm -rf $(OBJSB)
@@ -68,4 +68,3 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJSB)
-	ar rcs $(NAME) $(OBJSB)

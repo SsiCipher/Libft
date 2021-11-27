@@ -6,7 +6,7 @@
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:13:23 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/15 23:57:05 by yanab            ###   ########.fr       */
+/*   Updated: 2021/11/27 01:05:16 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void	free_split(char **split_str, int i)
 	while (i--)
 		free(split_str[i]);
 	free(split_str);
-	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -95,7 +94,10 @@ char	**ft_split(char const *s, char c)
 		part_start = ft_nth_part(s, c, i + 1);
 		split_str[i] = ft_substr(part_start, 0, ft_partlen(part_start, c));
 		if (!split_str[i])
+		{
 			free_split(split_str, i);
+			return (NULL);
+		}
 	}
 	split_str[i] = NULL;
 	return (split_str);
