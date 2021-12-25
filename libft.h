@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# define TRUE 1
+# define FALSE 0
+
 typedef struct s_list
 {
 	void			*content;
@@ -70,5 +73,20 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// My functions
+int		ft_isspace(int c);
+int		ft_every(const char *str, int (*f)(char));
+int		ft_any(const char *str, int (*f)(char));
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strstr(const char *haystack, const char *needle);
+int		ft_abs(int n);
+void	ft_bsort(int len, int *arr);
+int		ft_isspace(int c);
+char	*ft_strstr(const char *haystack, const char *needle);
+int		ft_strcmp(const char *s1, const char *s2);
+void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
+void	ft_puthex_fd(unsigned int n, int fd, int is_prefixed);
+void	ft_putbin_fd(unsigned int n, int fd, int is_prefixed);
 
 #endif
