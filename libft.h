@@ -88,6 +88,8 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 void	ft_puthex_fd(unsigned int n, int fd, int is_prefixed);
 void	ft_putbin_fd(unsigned int n, int fd, int is_prefixed);
+void	ft_swap(int *arr, int i, int j);
 int		ft_intlen(int n);
+void	ft_qsort(int *array, int size, int (*cmp)(int, int));
 
 #endif
