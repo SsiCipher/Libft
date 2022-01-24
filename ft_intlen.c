@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2022/01/24 08:20:32 by cipher           ###   ########.fr       */
+/*   Created: 2022/01/24 07:57:05 by cipher            #+#    #+#             */
+/*   Updated: 2022/01/24 08:02:38 by cipher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_intlen(int n)
 {
-	unsigned int	i;
-	unsigned int	src_length;
+	int	len;
 
-	src_length = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
+	len = 1;
+	if (n < 0)
 	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		len++;
+		n = -n;
 	}
-	return (src_length);
+	while ((n / 10) > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
 }

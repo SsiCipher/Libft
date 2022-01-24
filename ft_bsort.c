@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:17:41 by marvin            #+#    #+#             */
-/*   Updated: 2021/12/19 12:17:41 by marvin           ###   ########.fr       */
+/*   Updated: 2022/01/24 07:56:02 by cipher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_swap(int *arr, int from, int to)
+static void	ft_swap(int *arr, int i, int j)
 {
-	int	tmp;
+	int	temp;
 
-	tmp = arr[to];
-	arr[to] = arr[from];
-	arr[from] = arr[to];
+	temp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = temp;
 }
 
-void	ft_bsort(int len, int *arr)
+void	ft_bsort(int len, int *arr, int (*cmp)(int, int))
 {
 	int	i;
 	int	j;
@@ -30,10 +30,12 @@ void	ft_bsort(int len, int *arr)
 	while (i < len)
 	{
 		j = i;
-		while (i < j)
+		while (j < len)
 		{
-			if (arr[i] > arr[j])
-				ft_swap(arr, j, i);
+			if (cmp(arr[i], arr[j]) > 0)
+				ft_swap(arr, i, j);
+			j++;
 		}
+		i++;
 	}
 }
