@@ -91,5 +91,6 @@ void	ft_putbin_fd(unsigned int n, int fd, int is_prefixed);
 void	ft_swap(int *arr, int i, int j);
 int		ft_intlen(int n);
 void	ft_qsort(int *array, int size, int (*cmp)(int, int));
+int		ft_countchr(char *str, char c);
 
 #endif

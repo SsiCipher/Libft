@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 08:33:05 by cipher            #+#    #+#             */
-/*   Updated: 2022/01/24 10:25:51 by cipher           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:53:11 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int ft_sort_part(int *array, int size, int (*cmp)(int, int))
+int	ft_sort_part(int *array, int size, int (*cmp)(int, int))
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = -1;
-	while(++j < size)
+	while (++j < size)
 	{
-		if (cmp(array[j] ,array[size - 1]) <= 0)
+		if (cmp(array[j], array[size - 1]) <= 0)
 			ft_swap(array, i++, j);
 	}
 	if (i == 0)

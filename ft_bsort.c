@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bsort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:17:41 by marvin            #+#    #+#             */
-/*   Updated: 2022/01/24 09:11:35 by cipher           ###   ########.fr       */
+/*   Updated: 2022/02/05 20:53:41 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_bsort(int len, int *arr, int (*cmp)(int, int))
 			j++;
 		}
 		if (!is_swapped)
-			break;
+			break ;
 		i++;
 	}
 }
