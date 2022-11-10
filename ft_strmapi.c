@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:14:26 by yanab             #+#    #+#             */
-/*   Updated: 2022/01/24 08:18:01 by cipher           ###   ########.fr       */
+/*   Updated: 2021/11/14 14:14:26 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	mapped_str = (char *)malloc(sizeof(char) * (str_len + 1));
 	if (!mapped_str)
 		return (NULL);
-	i = -1;
-	while (s[++i])
+	i = 0;
+	while (s[i])
+	{
 		mapped_str[i] = f(i, s[i]);
+		i++;
+	}
 	mapped_str[i] = '\0';
 	return (mapped_str);
 }

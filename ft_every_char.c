@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_every_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/14 14:14:11 by yanab            ###   ########.fr       */
+/*   Created: 2021/12/19 09:28:15 by marvin            #+#    #+#             */
+/*   Updated: 2022/09/08 04:53:00 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_every_char(const char *str, char c)
 {
-	unsigned int	i;
-	unsigned int	src_length;
-
-	src_length = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
+	if (*str == '\0')
+		return (0);
+	while (*str)
 	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		if (*str != c)
+			return (0);
+		str++;
 	}
-	return (src_length);
+	return (1);
 }

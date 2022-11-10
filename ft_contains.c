@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_every.c                                         :+:      :+:    :+:   */
+/*   ft_contains.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 07:20:04 by yanab             #+#    #+#             */
-/*   Updated: 2021/12/13 07:25:23 by yanab            ###   ########.fr       */
+/*   Created: 2022/11/05 19:27:42 by cipher            #+#    #+#             */
+/*   Updated: 2022/11/05 19:29:25 by cipher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_every(char *arr, int (*f)(char))
+bool	ft_contains(char *str, char chr)
 {
-	while (*arr)
-	{
-		if (!f(*arr))
-			return (0);
-		arr++;
-	}
-	return (1);
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == chr)
+			return (true);
+	return (false);
 }

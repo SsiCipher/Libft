@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_arr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/14 14:14:11 by yanab            ###   ########.fr       */
+/*   Created: 2022/06/27 06:03:16 by yanab             #+#    #+#             */
+/*   Updated: 2022/06/27 06:10:05 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strjoin_arr(char **arr)
 {
-	unsigned int	i;
-	unsigned int	src_length;
+	int		i;
+	char	*temp;
+	char	*output;
 
-	src_length = ft_strlen(src);
 	i = 0;
-	if (dstsize > 0)
+	output = NULL;
+	while (arr[i])
 	{
-		while (src[i] && i < dstsize - 1)
+		if (i)
 		{
-			dst[i] = src[i];
-			i++;
+			temp = output;
+			output = ft_strjoin(output, " ");
+			free(temp);
 		}
-		dst[i] = '\0';
+		temp = output;
+		output = ft_strjoin(output, arr[i]);
+		free(temp);
+		i++;
 	}
-	return (src_length);
+	return (output);
 }

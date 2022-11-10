@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_arr_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/14 14:14:11 by yanab            ###   ########.fr       */
+/*   Created: 2022/11/05 03:22:10 by yanab             #+#    #+#             */
+/*   Updated: 2022/11/06 12:12:26 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+int	ft_arr_len(char **arr)
 {
-	unsigned int	i;
-	unsigned int	src_length;
+	int	len;
 
-	src_length = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
-	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (src_length);
+	len = 0;
+	while (arr[len])
+		len++;
+	return (len);
 }

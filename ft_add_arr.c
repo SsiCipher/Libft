@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_add_arr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/14 14:14:11 by yanab            ###   ########.fr       */
+/*   Created: 2022/10/29 04:29:00 by yanab             #+#    #+#             */
+/*   Updated: 2022/11/03 03:54:30 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	**ft_add_arr(char **arr, size_t index, char *value)
 {
-	unsigned int	i;
-	unsigned int	src_length;
+	size_t	i;
+	size_t	arr_size;
+	char	**new_arr;
 
-	src_length = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
+	arr_size = 0;
+	while (arr[arr_size])
+		arr_size++;
+	new_arr = malloc(sizeof(char *) * (arr_size + 2));
+	i = -1;
+	while (++i < arr_size + 1)
 	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		if (i < index)
+			new_arr[i] = arr[i];
+		else if (i == index)
+			new_arr[i] = ft_strdup(value);
+		else
+			new_arr[i] = arr[i - 1];
 	}
-	return (src_length);
+	new_arr[i] = NULL;
+	free(arr);
+	return (new_arr);
 }

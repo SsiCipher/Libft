@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:13:46 by yanab             #+#    #+#             */
-/*   Updated: 2022/01/24 08:10:56 by cipher           ###   ########.fr       */
+/*   Updated: 2021/11/14 14:13:46 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 
 	if (s != NULL && f != NULL)
 	{
-		i = -1;
-		while (s[++i])
+		i = 0;
+		while (s[i])
+		{
 			f(i, &s[i]);
+			i++;
+		}
 	}
 }

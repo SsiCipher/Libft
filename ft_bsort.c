@@ -6,11 +6,16 @@
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 12:17:41 by marvin            #+#    #+#             */
-/*   Updated: 2022/02/05 20:53:41 by yanab            ###   ########.fr       */
+/*   Updated: 2022/04/07 21:58:20 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	cmp_func(int a, int b)
+{
+	return (a - b);
+}
 
 void	ft_bsort(int len, int *arr, int (*cmp)(int, int))
 {
@@ -20,6 +25,8 @@ void	ft_bsort(int len, int *arr, int (*cmp)(int, int))
 
 	i = 0;
 	is_swapped = 0;
+	if (!cmp)
+		cmp = cmp_func;
 	while (i < len)
 	{
 		j = i;

@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_add_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 14:14:10 by yanab             #+#    #+#             */
-/*   Updated: 2021/11/14 14:14:11 by yanab            ###   ########.fr       */
+/*   Created: 2022/11/04 11:03:04 by cipher            #+#    #+#             */
+/*   Updated: 2022/11/10 18:05:12 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_add_str(char *str, int index, char *value)
 {
-	unsigned int	i;
-	unsigned int	src_length;
+	char	*output;
+	char	tmp;
 
-	src_length = ft_strlen(src);
-	i = 0;
-	if (dstsize > 0)
-	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (src_length);
+	tmp = str[index];
+	str[index] = '\0';
+	output = ft_multijoin(3, str, value, &str[index + 1]);
+	str[index] = tmp;
+	free(str);
+	return (output);
 }

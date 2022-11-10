@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cipher <cipher@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yanab <yanab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 14:11:27 by yanab             #+#    #+#             */
-/*   Updated: 2022/01/24 08:06:04 by cipher           ###   ########.fr       */
+/*   Updated: 2021/11/16 00:08:17 by yanab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_numlen(int n)
+{
+	int	len;
+
+	len = 0;
+	while (n > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
 
 static char	*convert_int(int n, int padding)
 {
@@ -18,7 +31,7 @@ static char	*convert_int(int n, int padding)
 	int		n_length;
 	char	*nstr;
 
-	n_length = ft_intlen(n);
+	n_length = ft_numlen(n);
 	i = n_length - 1;
 	nstr = (char *)malloc(sizeof(char) * (n_length + 1 + padding));
 	if (!nstr)
